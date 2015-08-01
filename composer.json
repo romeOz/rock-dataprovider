@@ -1,0 +1,40 @@
+{
+  "name": "romeoz/rock-dataprovider",
+  "description": "Data providers (sorting, pagination)",
+  "keywords": [
+    "sort",
+    "pagination"
+  ],
+  "type": "library",
+  "license": "MIT",
+  "support": {
+    "issues": "https://github.com/romeOz/rock-dataprovider/issues",
+    "source": "https://github.com/romeOz/rock-dataprovider"
+  },
+  "authors": [
+    {
+      "name": "Ruslan",
+      "email": "serggalka@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=5.4.0",
+    "romeoz/rock-components": "*@dev",
+    "romeoz/rock-url": "*@dev"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "~4.7.0",
+    "romeoz/rock-sanitize": "*@dev",
+    "romeoz/rock-template": "*@dev"
+  },
+  "autoload": {
+    "psr-4": {
+      "rock\\data\\": "src/"
+    }
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "0.10-dev"
+    }
+  }
+}
