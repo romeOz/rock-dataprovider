@@ -23,6 +23,7 @@
     </testsuites>
     <filter>
         <blacklist>
+            <file>./src/ActiveDataProvider.php</file>
             <file>./src/DataProviderException.php</file>
             <file>./src/DataProviderInterface.php</file>
             <directory>./tests/</directory>
