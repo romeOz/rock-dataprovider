@@ -1,10 +1,8 @@
 <?php
 namespace rock\data;
 
-use rock\data\DataProviderException;
 use rock\db\common\ActiveQueryInterface;
 use rock\db\common\ActiveRecordInterface;
-use rock\data\BaseDataProvider;
 use rock\db\common\ConnectionInterface;
 use rock\db\common\QueryInterface;
 use rock\helpers\Instance;
@@ -100,7 +98,7 @@ class ActiveDataProvider extends BaseDataProvider
         $query = clone $this->query;
         if (($pagination = $this->getPagination()) !== false) {
             $pagination->totalCount = $this->getTotalCount();
-            $query->limit($pagination->limit)->offset($pagination->offset);
+            $query->limit($pagination->getLimit())->offset($pagination->getOffset());
         }
 
         if (($sort = $this->getSort()) !== false) {
