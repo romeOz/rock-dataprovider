@@ -27,7 +27,9 @@ Installation
 
 From the Command Line:
 
-`composer require romeoz/rock-dataprovider:*`
+```
+composer require romeoz/rock-dataprovider
+```
 
 In your composer.json:
 
@@ -42,8 +44,10 @@ In your composer.json:
 Requirements
 -------------------
 
- * PHP 5.4+
- * [Rock DB](https://github.com/romeOz/rock-db) **(optional)**. Should be installed: `composer require romeoz/rock-db:*`
+ * **PHP 5.4+**
+ * For using `ActiveDataProvider` required [Rock DB](https://github.com/romeOz/rock-db): `composer require romeoz/rock-db`
+
+>All unbolded dependencies is optional
 
 License
 -------------------
