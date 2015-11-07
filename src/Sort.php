@@ -327,19 +327,18 @@ class Sort implements ObjectInterface
      * For example, if the current page already sorts the data by the specified attribute in ascending order,
      * then the URL created will lead to a page that sorts the data by the specified attribute in descending order.
      * @param string $attribute the attribute name
-     * @param string $scheme
      * @return string the URL for sorting. False if the attribute is invalid.
      * @see attributeOrders
      * @see params
      */
-    public function createUrl($attribute, $scheme = Url::REL)
+    public function createUrl($attribute)
     {
         $params = [$this->sortParam => $this->createSortParam($attribute)];
 
         if (is_array($this->url)) {
-            return Url::modify(array_merge($this->url, $params), $scheme);
+            return Url::modify(array_merge($this->url, $params));
         } elseif ($this->url instanceof Url) {
-            return $this->url->setArgs($params)->get($scheme);
+            return $this->url->setQueryParams($params)->get();
         }
         return Url::modify($params);
     }

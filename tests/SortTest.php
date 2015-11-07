@@ -129,6 +129,9 @@ class SortTest extends \PHPUnit_Framework_TestCase
 
     public function testLink()
     {
+        if (!class_exists('\rock\template\Template')) {
+            $this->markTestSkipped("Doesn't installed Rock Template.");
+        }
         $sort = new Sort([
             'attributes' => [
                 'age',

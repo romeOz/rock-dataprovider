@@ -298,11 +298,10 @@ class PaginationProvider implements ObjectInterface, \ArrayAccess, Linkable
      * This method is mainly called by pagers when creating URLs used to perform pagination.
      * @param integer $page the zero-based page number that the URL should point to.
      * @param null $limit
-     * @param string $scheme
      * @return string the created URL
      * @throws \rock\url\UrlException
      */
-    public function createUrl($page, $limit = null, $scheme = Url::REL)
+    public function createUrl($page, $limit = null)
     {
         $params = [$this->pageParam => (int)$page];
 
@@ -317,29 +316,28 @@ class PaginationProvider implements ObjectInterface, \ArrayAccess, Linkable
         }
 
         if (is_array($this->url)) {
-            return Url::modify(array_merge($this->url, $params), $scheme);
+            return Url::modify(array_merge($this->url, $params));
         } elseif ($this->url instanceof Url) {
-            return $this->url->setArgs($params)->get($scheme);
+            return $this->url->setQueryParams($params)->get();
         }
-        return Url::modify($params, $scheme);
+        return Url::modify($params);
     }
 
     /**
      * Returns a whole set of links for navigating to the first, last, next and previous pages.
-     * @param string $scheme
      * @return array the links for navigational purpose.
      * The array keys specify the purpose of the links (e.g. {@see \rock\data\PaginationProvider::LINK_FIRST}),
      * and the array values are the corresponding URLs.
      */
-    public function getLinks($scheme = Url::REL)
+    public function getLinks()
     {
         $this->calculate();
         return [
-            Link::REL_SELF => $this->createUrl($this->getPage(), null, $scheme),
-            self::LINK_FIRST => $this->createUrl($this->getPageFirst(), null, $scheme),
-            self::LINK_PREV => $this->createUrl($this->getPagePrev(), null, $scheme),
-            self::LINK_NEXT => $this->createUrl($this->getPageNext(), null, $scheme),
-            self::LINK_LAST => $this->createUrl($this->getPageLast(), null, $scheme),
+            Link::REL_SELF => $this->createUrl($this->getPage()),
+            self::LINK_FIRST => $this->createUrl($this->getPageFirst()),
+            self::LINK_PREV => $this->createUrl($this->getPagePrev()),
+            self::LINK_NEXT => $this->createUrl($this->getPageNext()),
+            self::LINK_LAST => $this->createUrl($this->getPageLast()),
         ];
     }
 
